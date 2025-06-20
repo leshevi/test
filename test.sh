@@ -12,11 +12,11 @@ LOG_FILE="./monitoring.log"
 touch "$LOCK_FILE"
 
 # Блокировка для предотвращения параллельного выполнения
-exec 8>"$LOCK_FILE"
-flock -n 8 || exit 1
+exec 9>"$LOCK_FILE"
+flock -n 9 || exit 1
 
 # Проверка наличия процесса test
-if pgrep -x "mon.sh" >/dev/null; then
+if pgrep -x "test" >/dev/null; then
     CURRENT_STATE=1
 else
     CURRENT_STATE=0
